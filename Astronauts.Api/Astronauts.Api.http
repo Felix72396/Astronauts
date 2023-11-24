@@ -1,0 +1,6 @@
+@Astronauts.Api_HostAddress = http://localhost:5082
+
+GET {{Astronauts.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
