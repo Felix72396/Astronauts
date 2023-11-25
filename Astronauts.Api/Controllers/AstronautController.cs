@@ -35,12 +35,12 @@ public class AstronautController : ControllerBase
     /// </summary>
     /// <param name="filters">Filters to apply</param>
     /// <returns></returns>
-    [HttpGet(Name = nameof(GetAll))]
+    [HttpGet(Name = nameof(GetAstronauts))]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<AstronautDto>>))]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public IActionResult GetAll([FromQuery] AstronautQueryFilter filters)
+    public IActionResult GetAstronauts([FromQuery] AstronautQueryFilter filters)
     {
-        var astronauts = _astronautService.GetAll(filters);
+        var astronauts = _astronautService.GetAstronauts(filters);
         var astronautDtos = _mapper.Map<IEnumerable<AstronautDto>>(astronauts);
 
         var metadata = new MetaData
@@ -51,8 +51,8 @@ public class AstronautController : ControllerBase
             TotalPages = astronauts.TotalPages,
             HasPreviousPage = astronauts.HasPreviousPage,
             HasNextPage = astronauts.HasNextPage,
-            PreviousPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetAll)))?.ToString(),
-            NextPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetAll)))?.ToString()
+            PreviousPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetAstronauts)))?.ToString(),
+            NextPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetAstronauts)))?.ToString()
         };
 
         var response = new ApiResponse<IEnumerable<AstronautDto>>(astronautDtos)
@@ -66,19 +66,19 @@ public class AstronautController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    public async Task<IActionResult> GetAstronaut(int id)
     {
-        var astronaut = await _astronautService.GetById(id);
+        var astronaut = await _astronautService.GetAstronaut(id);
         var astronautDto = _mapper.Map<AstronautDto>(astronaut);
         var response = new ApiResponse<AstronautDto>(astronautDto);
         return Ok(response);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(AstronautDto astronautDto)
+    public async Task<IActionResult> PostAstronaut(AstronautDto astronautDto)
     {
         var astronaut = _mapper.Map<Astronaut>(astronautDto);
-        await _astronautService.Post(astronaut);
+        await _astronautService.PostAstronaut(astronaut);
 
         astronautDto = _mapper.Map<AstronautDto>(astronaut);
         var response = new ApiResponse<AstronautDto>(astronautDto);

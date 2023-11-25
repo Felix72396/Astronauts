@@ -16,4 +16,5 @@ public class UriService : IUriService
         string baseUrl = $"{_baseUri}{actionUrl}";
         return new Uri(baseUrl);
     }
+
 }

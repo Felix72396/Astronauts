@@ -11,6 +11,7 @@ public class AutoMapperProfile : Profile
     public AutoMapperProfile()
     {
         CreateMap<Astronaut, AstronautDto>().ReverseMap();
+        CreateMap<Mission, MissionDto>().ReverseMap();
         CreateMap<Security, SecurityDto>().ReverseMap();
     }
 }

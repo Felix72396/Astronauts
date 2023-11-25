@@ -7,6 +7,7 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly AstronautMediaContext _context;
     private readonly IAstronautRepository _astronautRepository;
+    private readonly IMissionRepository _missionRepository;
     private readonly ISecurityRepository _securityRepository;
 
     public UnitOfWork(AstronautMediaContext context)
@@ -15,8 +16,9 @@ public class UnitOfWork : IUnitOfWork
     }
 
     public IAstronautRepository AstronautRepository => _astronautRepository ?? new AstronautRepository(_context);
-
+    public IMissionRepository MissionRepository => _missionRepository ?? new MissionRepository(_context);
     public ISecurityRepository SecurityRepository => _securityRepository ?? new SecurityRepository(_context);
+
 
     public void Dispose()
     {

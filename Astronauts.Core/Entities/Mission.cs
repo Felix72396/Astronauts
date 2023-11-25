@@ -2,11 +2,12 @@
 
 public class Mission : BaseEntity
 {
-    public Mission() 
+    public Mission()
     {
-        AstronautMissions = new HashSet<AstronautMission>();
+        Astronauts = new HashSet<Astronaut>();
     }
 
+    public string Title { get; set; }
     public string Description { get; set; }
-    public virtual ICollection<AstronautMission> AstronautMissions { get; set; }
+    public virtual ICollection<Astronaut> Astronauts { get; set; }
 }

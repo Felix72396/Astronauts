@@ -4,8 +4,8 @@ public partial class Astronaut : BaseEntity
 {
     public Astronaut()
     {
-        AstronautMissions = new HashSet<AstronautMission>();
-        AstronautSocialMedia = new HashSet<AstronautSocialMedia>();
+        Missions = new HashSet<Mission>();
+        SocialMedia = new HashSet<SocialMedia>();
     }
 
     public string FirstName { get; set; }
@@ -16,7 +16,7 @@ public partial class Astronaut : BaseEntity
     public bool Status { get; set; }
     public byte[]? Photo { get; set; }
 
-    public virtual ICollection<AstronautMission> AstronautMissions { get; set; }
-    public virtual ICollection<AstronautSocialMedia> AstronautSocialMedia { get; set; }
+    public virtual ICollection<Mission> Missions { get; set; }
+    public virtual ICollection<SocialMedia> SocialMedia { get; set; }
 
 }

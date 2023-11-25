@@ -34,6 +34,7 @@ public static class ServiceCollectionExtension
     public static void AddServices(this IServiceCollection services)
     {
         services.AddTransient<IAstronautService, AstronautService>();
+        services.AddTransient<IMissionService, MissionService>();
         services.AddTransient<ISecurityService, SecurityService>();
         services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
         services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
