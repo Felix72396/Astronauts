@@ -16,29 +16,32 @@ public class AstronautService : IAstronautService
         _paginationOptions = options.Value;
     }
 
-    public PagedList<Astronaut> GetAll(AstronautQueryFilter filters)
+    public PagedList<Astronaut> GetAstronauts(AstronautQueryFilter filters)
     {
         filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
         filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageNumber;
 
-        var austronauts = _unitOfWork.AstronautRepository.GetAll();
+        var astronauts = _unitOfWork.AstronautRepository.GetAll();
 
-        if (filters.Nacionality != null)
-            austronauts = austronauts.Where(x => x.Nationality == filters.Nacionality);
+        if (filters.AstronautId != null)
+            astronauts = astronauts.Where(x => x.Id == filters.AstronautId);
+
+        if (filters.Nationality != null)
+            astronauts = astronauts.Where(x => x.Nationality == filters.Nationality);
 
         if (filters.Status != null)
-            austronauts = austronauts.Where(x => x.Status == filters.Status);
+            astronauts = astronauts.Where(x => x.Status == filters.Status);
 
-        var pagedAustronauts = PagedList<Astronaut>.Create(austronauts, filters.PageNumber, filters.PageSize);
-        return pagedAustronauts;
+        var pagedAstronauts = PagedList<Astronaut>.Create(astronauts, filters.PageNumber, filters.PageSize);
+        return pagedAstronauts;
     }
 
-    public async Task<Astronaut> GetById(int id)
+    public async Task<Astronaut> GetAstronaut(int id)
     {
         return await _unitOfWork.AstronautRepository.GetById(id);
     }
 
-    public async Task Post(Astronaut austronaut)
+    public async Task PostAstronaut(Astronaut austronaut)
     {
         await _unitOfWork.AstronautRepository.Post(austronaut);
         await _unitOfWork.SaveChangesAsync();

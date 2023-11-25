@@ -2,11 +2,11 @@
 
 public class SocialMedia : BaseEntity
 {
-    public SocialMedia() 
+    public SocialMedia()
     {
-        AstronautSocialMedia = new HashSet<AstronautSocialMedia>();
+        Astronauts = new HashSet<Astronaut>();
     }
 
     public string Description { get; set; }
-    public virtual ICollection<AstronautSocialMedia> AstronautSocialMedia { get; set; }
+    public virtual ICollection<Astronaut> Astronauts { get; set; }
 }

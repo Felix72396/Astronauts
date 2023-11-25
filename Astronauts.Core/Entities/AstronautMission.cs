@@ -1,9 +1,16 @@
-﻿namespace Astronauts.Core.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace Astronauts.Core.Entities
 {
     public class AstronautMission
     {
-        public int AustronautId { get; set; }
-        public int SocialMediaId { get; set; }
-        public int Link { get; set; }
+        //[Key]
+        public int AstronautId { get; set; }
+        public virtual Astronaut Astronaut { get; set; }
+
+        //[Key]
+        public int MissionId { get; set; }
+        public virtual Mission Mission { get; set; }
     }
 }

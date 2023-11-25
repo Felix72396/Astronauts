@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-
-namespace Astronauts.Infraestructure.Data.Configurations;
-
 using Astronauts.Core.Entities;
 
+namespace Astronauts.Infraestructure.Data.Configurations;
 public class AstronautConfiguration : IEntityTypeConfiguration<Astronaut>
 {
     public void Configure(EntityTypeBuilder<Astronaut> builder)
@@ -36,7 +33,6 @@ public class AstronautConfiguration : IEntityTypeConfiguration<Astronaut>
 
 
             builder.Property(e => e.Description)
-            .IsRequired()
             .HasMaxLength(200)
             .IsUnicode(true)
             .HasColumnType("string");
@@ -50,7 +46,6 @@ public class AstronautConfiguration : IEntityTypeConfiguration<Astronaut>
             .HasColumnType("bool");
 
             builder.Property(e => e.Photo)
-            .IsRequired()
             .HasColumnType("byte[]");  
     }
 }
