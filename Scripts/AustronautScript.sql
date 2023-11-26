@@ -104,6 +104,7 @@ VALUES
 ('LinkedIn')
 GO
 
+GO
 CREATE TABLE AstronautSocialMedia
 (
 	AstronautId INT CONSTRAINT FK_Astronaut2 FOREIGN KEY (AstronautId) REFERENCES Astronaut(Id) ON DELETE CASCADE ON UPDATE CASCADE,
