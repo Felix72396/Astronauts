@@ -3,11 +3,6 @@ using Astronauts.Core.Entities;
 using Astronauts.Core.Interfaces;
 using Astronauts.Core.QueryFilters;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Astronauts.Core.Services;
 
@@ -25,15 +20,15 @@ public class MissionService : IMissionService
     public PagedList<Mission> GetMissions(MissionQueryFilter filters)
     {
         filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
-        filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageNumber;
+        filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;
 
         var missions = _unitOfWork.MissionRepository.GetAll();
 
-        if (filters.MissionId != null)
-            missions = missions.Where(x => x.Id == filters.MissionId);
+        //if (filters.MissionId != null)
+        //    missions = missions.Where(x => x.Id == filters.MissionId);
 
-        if (filters.AstronautId != null)
-            missions = missions.Where(x => x.Id == filters.MissionId);
+        //if (filters.AstronautId != null)
+        //    missions = missions.Where(x => x.Id == filters.MissionId);
 
 
         var pagedmissions = PagedList<Mission>.Create(missions, filters.PageNumber, filters.PageSize);

@@ -14,7 +14,7 @@ public partial class Astronaut : BaseEntity
     public string? Description { get; set; }
     public DateTime BirthDate { get; set; }
     public bool Status { get; set; }
-    public byte[]? Photo { get; set; }
+    public byte[]? Photo { get; set; } = null;
 
     public virtual ICollection<Mission> Missions { get; set; }
     public virtual ICollection<SocialMedia> SocialMedia { get; set; }

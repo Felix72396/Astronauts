@@ -9,7 +9,7 @@ public class AstronautValidator : AbstractValidator<AstronautDto>
     public AstronautValidator()
     {
         RuleFor(astronaut => astronaut.FirstName)
-        .Length(20)
+        .MaximumLength(25)
         .WithMessage("The firstname must have max 25 characteres.");
 
         RuleFor(astronaut => astronaut.FirstName)
@@ -18,7 +18,7 @@ public class AstronautValidator : AbstractValidator<AstronautDto>
 
 
         RuleFor(astronaut => astronaut.LastName)
-        .Length(20)
+        .MaximumLength(25)
         .WithMessage("The lastname must have max 25 characteres.");
 
         RuleFor(astronaut => astronaut.LastName)
@@ -27,7 +27,7 @@ public class AstronautValidator : AbstractValidator<AstronautDto>
 
 
         RuleFor(astronaut => astronaut.Nationality)
-        .Length(20)
+        .MaximumLength(20)
         .WithMessage("The nationality must have max 20 characteres.");
 
         RuleFor(astronaut => astronaut.Nationality)
@@ -36,7 +36,7 @@ public class AstronautValidator : AbstractValidator<AstronautDto>
 
 
         RuleFor(astronaut => astronaut.Description)
-        .Length(20)
+        .MaximumLength(200)
         .WithMessage("The description must have max 200 characteres.");
 
         RuleFor(astronaut => astronaut.Description)

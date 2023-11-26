@@ -19,7 +19,7 @@ public class AstronautService : IAstronautService
     public PagedList<Astronaut> GetAstronauts(AstronautQueryFilter filters)
     {
         filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
-        filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageNumber;
+        filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;
 
         var astronauts = _unitOfWork.AstronautRepository.GetAll();
 
@@ -41,9 +41,9 @@ public class AstronautService : IAstronautService
         return await _unitOfWork.AstronautRepository.GetById(id);
     }
 
-    public async Task PostAstronaut(Astronaut austronaut)
+    public async Task PostAstronaut(Astronaut astronaut)
     {
-        await _unitOfWork.AstronautRepository.Post(austronaut);
+        await _unitOfWork.AstronautRepository.Post(astronaut);
         await _unitOfWork.SaveChangesAsync();
     }
 }

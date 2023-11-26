@@ -18,13 +18,13 @@ namespace Astronauts.Infraestructure.Data.Configurations
             .HasMaxLength(60)
             .IsRequired()
             .IsUnicode(false)
-            .HasColumnType("string");
+            .HasColumnType("varchar(60)");
 
             builder.Property(e => e.Description)
             .HasMaxLength(500)
             .IsRequired()
             .IsUnicode(true)
-            .HasColumnType("string");
+            .HasColumnType("nvarchar(500)");
 
         }
     }
