@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
-using Astronauts.Infraestructure.Data.Configurations;
 using System.Reflection;
 
 namespace Astronauts.Core.Entities;
@@ -14,41 +12,45 @@ public partial class AstronautMediaContext : DbContext
     public virtual DbSet<Astronaut> Astronauts { get; set; }
     public virtual DbSet<Mission> Missions { get; set; }
     public virtual DbSet<SocialMedia> SocialMedia { get; set; }
-    //public virtual DbSet<AstronautMission> AstronautMissions { get; set; }
-    //public virtual DbSet<AstronautSocialMedia> AstronautSocialMedia { get; set; }
+    public virtual DbSet<AstronautMission> AstronautMissions { get; set; }
+    public virtual DbSet<AstronautSocialMedia> AstronautSocialMedia { get; set; }
     public virtual DbSet<Security> Securities { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Astronaut>()
-                .HasMany(m => m.Missions)
-                .WithMany(a => a.Astronauts)
+                .HasMany(a => a.Missions)
+                .WithMany(m => m.Astronauts)
                 .UsingEntity<AstronautMission>(
-                    ma => ma.HasOne(prop => prop.Mission)
+                    am => am.HasOne(prop => prop.Mission)
                     .WithMany()
                     .HasForeignKey(prop => prop.MissionId),
-                    ma => ma.HasOne(prop => prop.Astronaut)
+
+                    am => am.HasOne(prop => prop.Astronaut)
                     .WithMany()
                     .HasForeignKey(prop => prop.AstronautId),
-                    ma =>
+
+                    am =>
                     {
-                        ma.HasKey(prop => new { prop.AstronautId, prop.MissionId });
+                        am.HasKey(prop => new { prop.AstronautId, prop.MissionId });
                     }
                 );
 
         modelBuilder.Entity<Astronaut>()
-               .HasMany(m => m.SocialMedia)
-               .WithMany(a => a.Astronauts)
+               .HasMany(a => a.SocialMedia)
+               .WithMany(sm => sm.Astronauts)
                .UsingEntity<AstronautSocialMedia>(
-                   ma => ma.HasOne(prop => prop.SocialMedia)
+                   asm => asm.HasOne(prop => prop.SocialMedia)
                    .WithMany()
                    .HasForeignKey(prop => prop.SocialMediaId),
-                   ma => ma.HasOne(prop => prop.Astronaut)
+
+                   asm => asm.HasOne(prop => prop.Astronaut)
                    .WithMany()
                    .HasForeignKey(prop => prop.AstronautId),
-                   ma =>
+
+                   asm =>
                    {
-                       ma.HasKey(prop => new { prop.AstronautId, prop.SocialMediaId });
+                       asm.HasKey(prop => new { prop.AstronautId, prop.SocialMediaId });
                    }
                );
 

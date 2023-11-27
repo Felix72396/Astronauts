@@ -2,10 +2,10 @@
 
 public class Mission : BaseEntity
 {
-    public Mission()
-    {
-        Astronauts = new HashSet<Astronaut>();
-    }
+    //public Mission()
+    //{
+    //    Astronauts = new HashSet<Astronaut>();
+    //}
 
     public string Title { get; set; }
     public string Description { get; set; }

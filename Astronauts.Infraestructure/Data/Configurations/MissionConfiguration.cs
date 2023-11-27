@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Astronauts.Infraestructure.Data.Configurations
 {
-    public class MissionConfiguration
+    public class MissionConfiguration : IEntityTypeConfiguration<Mission>
     {
         public void Configure(EntityTypeBuilder<Mission> builder)
         {
@@ -18,7 +18,7 @@ namespace Astronauts.Infraestructure.Data.Configurations
             .HasMaxLength(60)
             .IsRequired()
             .IsUnicode(false)
-            .HasColumnType("varchar(60)");
+            .HasColumnType("varchar(40)");
 
             builder.Property(e => e.Description)
             .HasMaxLength(500)

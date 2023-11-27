@@ -8,5 +8,5 @@ public interface IAstronautService
 {
     PagedList<Astronaut> GetAstronauts(AstronautQueryFilter filters);
     Task<Astronaut> GetAstronaut(int id);
-    Task PostAstronaut(Astronaut austronaut);
+    Task PostAstronaut(Astronaut astronaut);
 }

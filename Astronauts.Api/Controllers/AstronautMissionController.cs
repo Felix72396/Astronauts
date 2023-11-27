@@ -9,35 +9,27 @@ using Astronauts.Infraestructure.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Net;
 
 namespace Astronauts.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MissionController : ControllerBase
+    public class AstronautMissionController : ControllerBase
     {
-        private readonly IMissionService _missionService;
+        private readonly IAstronautMissionService _astronautMissionService;
         private readonly IMapper _mapper;
         private readonly IUriService _uriService;
-        public MissionController(IMissionService missionService, IMapper mapper, IUriService uriService)
+        public AstronautMissionController(IAstronautMissionService astronautMissionService, IMapper mapper, IUriService uriService)
         {
-            _missionService = missionService;
+            _astronautMissionService = astronautMissionService;
             _mapper = mapper;
             _uriService = uriService;
         }
 
-        /// <summary>
-        /// Retrieve all missions
-        /// </summary>
-        /// <param name="filters">Filters to apply</param>
-        /// <returns></returns>
-        [HttpGet(Name = nameof(GetMissions))]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<MissionDto>>))]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public IActionResult GetMissions([FromQuery] MissionQueryFilter filters)
+        [HttpGet]
+        public IActionResult GetMissionsByAstronaut([FromQuery] AstronautMissionQueryFilter filters)
         {
-            var missions = _missionService.GetMissions(filters);
+            var missions = _astronautMissionService.GetMissionsByAstronaut(filters);
             var missionDtos = _mapper.Map<IEnumerable<MissionDto>>(missions);
 
             var metadata = new MetaData
@@ -47,7 +39,7 @@ namespace Astronauts.Api.Controllers
                 CurrentPage = missions.CurrentPage,
                 TotalPages = missions.TotalPages,
                 HasPreviousPage = missions.HasPreviousPage,
-                HasNextPage = missions.HasNextPage
+                HasNextPage = missions.HasNextPage,
                 //PreviousPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetMissions)))?.ToString(),
                 //NextPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetMissions)))?.ToString()
             };
@@ -62,26 +54,15 @@ namespace Astronauts.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetMission(int id)
-        {
-            var mission = await _missionService.GetMission(id);
-            var missionDto = _mapper.Map<MissionDto>(mission);
-            var response = new ApiResponse<MissionDto>(missionDto);
-            return Ok(response);
-        }
-
         [HttpPost]
-        public async Task<IActionResult> PostMission(MissionDto missionDto)
+        public async Task<IActionResult> PostAstronautMission(AstronautMissionDto astronautMissionDto)
         {
-            var mission = _mapper.Map<Mission>(missionDto);
-            await _missionService.PostMission(mission);
+            var astronautMission = _mapper.Map<AstronautMission>(astronautMissionDto);
+            await _astronautMissionService.PostAstronautMission(astronautMission);
 
-            missionDto = _mapper.Map<MissionDto>(mission);
-            var response = new ApiResponse<MissionDto>(missionDto);
+            astronautMissionDto = _mapper.Map<AstronautMissionDto>(astronautMission);
+            var response = new ApiResponse<AstronautMissionDto>(astronautMissionDto);
             return Ok(response);
         }
-
-       
     }
 }

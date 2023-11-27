@@ -144,4 +144,4 @@ UserName VARCHAR(30) NOT NULL,
 )
 GO
 
-INSERT INTO [Security] VALUES ('admin', 'Felix Paniagua', '12345', 'Administrator')
+INSERT INTO [Security] VALUES ('admin', 'Felix Paniagua', '10000.5SD7C+FTFQWldE8WvrRErw==.PvQSKtcpwisycwxkNwHAWpkWnv9Wx2heYGPnejW9zDA=', 'Administrator')

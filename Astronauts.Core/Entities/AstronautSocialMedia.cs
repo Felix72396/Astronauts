@@ -8,7 +8,5 @@ public class AstronautSocialMedia
     public int SocialMediaId { get; set; }
     public virtual SocialMedia SocialMedia { get; set; }
 
-    public int Link { get; set; }
-    
-   
+    public string? Link { get; set; } 
 }

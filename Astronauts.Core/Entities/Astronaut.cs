@@ -2,11 +2,11 @@
 
 public partial class Astronaut : BaseEntity
 {
-    public Astronaut()
-    {
-        Missions = new HashSet<Mission>();
-        SocialMedia = new HashSet<SocialMedia>();
-    }
+    //public Astronaut()
+    //{
+    //    Missions = new HashSet<Mission>();
+    //    SocialMedia = new HashSet<SocialMedia>();
+    //}
 
     public string FirstName { get; set; }
     public string LastName { get; set; }

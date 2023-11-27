@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace Astronauts.Core.Entities
+﻿namespace Astronauts.Core.Entities
 {
     public class AstronautMission
     {

@@ -35,7 +35,10 @@ public static class ServiceCollectionExtension
     {
         services.AddTransient<IAstronautService, AstronautService>();
         services.AddTransient<IMissionService, MissionService>();
+        services.AddTransient<ISocialMediaService, SocialMediaService>();
+        services.AddTransient<IAstronautMissionService, AstronautMissionService>();
         services.AddTransient<ISecurityService, SecurityService>();
+        services.AddTransient<IMissionRepository, MissionRepository>();
         services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
         services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
         services.AddSingleton<IPasswordService, PasswordService>();

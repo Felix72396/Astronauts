@@ -6,36 +6,32 @@ using Microsoft.Extensions.Options;
 
 namespace Astronauts.Core.Services;
 
-public class MissionService : IMissionService
+public class AstronautMissionService : IAstronautMissionService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly PaginationOptions _paginationOptions;
 
-    public MissionService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options)
+    public AstronautMissionService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options)
     {
         _unitOfWork = unitOfWork;
         _paginationOptions = options.Value;
     }
 
-    public PagedList<Mission> GetMissions(MissionQueryFilter filters)
+    public PagedList<Mission> GetMissionsByAstronaut(AstronautMissionQueryFilter filters)
     {
         filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
         filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;
 
-        var missions = _unitOfWork.MissionRepository.GetAll();
+        var missionsByAstronaut = _unitOfWork.AstronautMissionRepository.GetMissionsByAstronaut(filters.AstronautId.Value);
+        var missions = missionsByAstronaut.Result; // Assuming GetMissionsByAstronaut returns a Task<IEnumerable<Mission>>
 
         var pagedMissions = PagedList<Mission>.Create(missions, filters.PageNumber, filters.PageSize);
         return pagedMissions;
     }
 
-    public async Task<Mission> GetMission(int id)
+    public async Task PostAstronautMission(AstronautMission astronautMission)
     {
-        return await _unitOfWork.MissionRepository.GetById(id);
-    }
-
-    public async Task PostMission(Mission mission)
-    {
-        await _unitOfWork.MissionRepository.Post(mission);
+        await _unitOfWork.AstronautMissionRepository.Post(astronautMission);
         await _unitOfWork.SaveChangesAsync();
     }
 }
