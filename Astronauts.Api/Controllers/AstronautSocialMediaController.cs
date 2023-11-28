@@ -26,7 +26,7 @@ public class AstronautSocialMediaController : ControllerBase
     }
 
     /// <summary>
-    /// Retrieve all social Media for astronaut
+    /// Retrieve all social media for astronaut
     /// </summary>
     /// <param name="filters">Filters to apply</param>
     /// <returns></returns>
@@ -35,7 +35,7 @@ public class AstronautSocialMediaController : ControllerBase
     public IActionResult GetSocialMediaByAstronaut([FromQuery] BaseQueryFilter filters)
     {
         var socialMedia = _astronautSocialMediaService.GetSocialMediaByAstronaut(filters);
-        var socialMediaDtos = _mapper.Map<IEnumerable<SocialMediaDto>>(socialMedia);
+        var socialMediaDtos = _mapper.Map<IEnumerable<CustomSocialMediaDto>>(socialMedia);
 
         var metadata = new MetaData
         {
@@ -49,7 +49,7 @@ public class AstronautSocialMediaController : ControllerBase
             //NextPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetSocialMedia)))?.ToString()
         };
 
-        var response = new ApiResponse<IEnumerable<SocialMediaDto>>(socialMediaDtos)
+        var response = new ApiResponse<IEnumerable<CustomSocialMediaDto>>(socialMediaDtos)
         {
             Meta = metadata
         };

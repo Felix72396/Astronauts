@@ -23,7 +23,7 @@ public class AstronautSocialMediaService : IAstronautSocialMediaService
         _paginationOptions = options.Value;
     }
 
-    public PagedList<SocialMedia> GetSocialMediaByAstronaut(BaseQueryFilter filters)
+    public PagedList<CustomSocialMediaDto> GetSocialMediaByAstronaut(BaseQueryFilter filters)
     {
         filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
         filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;
@@ -31,7 +31,7 @@ public class AstronautSocialMediaService : IAstronautSocialMediaService
         var socialMediaByAstronaut = _unitOfWork.AstronautSocialMediaRepository.GetSocialMediaByAstronaut(filters.AstronautId.Value);
         var socialMedia = socialMediaByAstronaut.Result; // Assuming GetSocialMediasByAstronaut returns a Task<IEnumerable<SocialMedia>>
 
-        var pagedMissions = PagedList<SocialMedia>.Create(socialMedia, filters.PageNumber, filters.PageSize);
+        var pagedMissions = PagedList<CustomSocialMediaDto>.Create(socialMedia, filters.PageNumber, filters.PageSize);
         return pagedMissions;
     }
 

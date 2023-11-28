@@ -87,7 +87,4 @@ public static class ServiceCollectionExtension
             doc.IncludeXmlComments(xmlPath);
         });
     }
-
-
- 
 }
