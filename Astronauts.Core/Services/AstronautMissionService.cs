@@ -17,7 +17,7 @@ public class AstronautMissionService : IAstronautMissionService
         _paginationOptions = options.Value;
     }
 
-    public PagedList<Mission> GetMissionsByAstronaut(AstronautMissionQueryFilter filters)
+    public PagedList<Mission> GetMissionsByAstronaut(BaseQueryFilter filters)
     {
         filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
         filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;

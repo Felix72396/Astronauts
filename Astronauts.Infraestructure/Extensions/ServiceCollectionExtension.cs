@@ -37,6 +37,7 @@ public static class ServiceCollectionExtension
         services.AddTransient<IMissionService, MissionService>();
         services.AddTransient<ISocialMediaService, SocialMediaService>();
         services.AddTransient<IAstronautMissionService, AstronautMissionService>();
+        services.AddTransient<IAstronautSocialMediaService, AstronautSocialMediaService>();
         services.AddTransient<ISecurityService, SecurityService>();
         services.AddTransient<IMissionRepository, MissionRepository>();
         services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));

@@ -69,7 +69,7 @@ public class TokenController : ControllerBase
             _configuration["Authentication:Audience"],
             claims,
             DateTime.Now,
-            DateTime.UtcNow.AddMinutes(500)
+            DateTime.UtcNow.AddMinutes(50000)
         );
 
         var token = new JwtSecurityToken(header, payload);

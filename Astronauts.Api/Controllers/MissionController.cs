@@ -35,7 +35,7 @@ namespace Astronauts.Api.Controllers
         [HttpGet(Name = nameof(GetMissions))]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<MissionDto>>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public IActionResult GetMissions([FromQuery] MissionQueryFilter filters)
+        public IActionResult GetMissions([FromQuery] BaseQueryFilter filters)
         {
             var missions = _missionService.GetMissions(filters);
             var missionDtos = _mapper.Map<IEnumerable<MissionDto>>(missions);

@@ -17,7 +17,7 @@ public class MissionService : IMissionService
         _paginationOptions = options.Value;
     }
 
-    public PagedList<Mission> GetMissions(MissionQueryFilter filters)
+    public PagedList<Mission> GetMissions(BaseQueryFilter filters)
     {
         filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
         filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;

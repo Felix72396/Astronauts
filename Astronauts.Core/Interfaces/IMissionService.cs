@@ -6,7 +6,7 @@ namespace Astronauts.Core.Interfaces;
 
 public interface IMissionService
 {
-    PagedList<Mission> GetMissions(MissionQueryFilter filters);
+    PagedList<Mission> GetMissions(BaseQueryFilter filters);
     Task<Mission> GetMission(int id);
     Task PostMission(Mission mission);
 }
