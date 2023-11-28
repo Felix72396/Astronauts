@@ -11,19 +11,19 @@ using Newtonsoft.Json;
 
 namespace Astronauts.Api.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
-public class AstronautSocialMediaController : ControllerBase
-{
-    private readonly IAstronautSocialMediaService _astronautSocialMediaService;
-    private readonly IMapper _mapper;
-    private readonly IUriService _uriService;
-    public AstronautSocialMediaController(IAstronautSocialMediaService astronautSocialMediaService, IMapper mapper, IUriService uriService)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AstronautSocialMediaController : ControllerBase
     {
+    private readonly IAstronautSocialMediaService _astronautSocialMediaService;
+        private readonly IMapper _mapper;
+        private readonly IUriService _uriService;
+    public AstronautSocialMediaController(IAstronautSocialMediaService astronautSocialMediaService, IMapper mapper, IUriService uriService)
+        {
         _astronautSocialMediaService = astronautSocialMediaService;
-        _mapper = mapper;
-        _uriService = uriService;
-    }
+            _mapper = mapper;
+            _uriService = uriService;
+        }
 
     /// <summary>
     /// Retrieve all social media for astronaut
@@ -31,14 +31,14 @@ public class AstronautSocialMediaController : ControllerBase
     /// <param name="filters">Filters to apply</param>
     /// <returns></returns>
 
-    [HttpGet]
+        [HttpGet]
     public IActionResult GetSocialMediaByAstronaut([FromQuery] BaseQueryFilter filters)
-    {
+        {
         var socialMedia = _astronautSocialMediaService.GetSocialMediaByAstronaut(filters);
         var socialMediaDtos = _mapper.Map<IEnumerable<CustomSocialMediaDto>>(socialMedia);
 
-        var metadata = new MetaData
-        {
+            var metadata = new MetaData
+            {
             TotalCount = socialMedia.TotalCount,
             PageSize = socialMedia.PageSize,
             CurrentPage = socialMedia.CurrentPage,
@@ -47,21 +47,21 @@ public class AstronautSocialMediaController : ControllerBase
             HasNextPage = socialMedia.HasNextPage,
             //PreviousPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetSocialMedia)))?.ToString(),
             //NextPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetSocialMedia)))?.ToString()
-        };
+            };
 
         var response = new ApiResponse<IEnumerable<CustomSocialMediaDto>>(socialMediaDtos)
         {
             Meta = metadata
         };
 
-        Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
 
-        return Ok(response);
-    }
+            return Ok(response);
+        }
 
-    [HttpPost]
+        [HttpPost]
     public async Task<IActionResult> PostAstronautSocialMedia(AstronautSocialMediaDto astronautSocialMediaDto)
-    {
+        {
         var astronautSocialMedia = _mapper.Map<AstronautSocialMedia>(astronautSocialMediaDto);
         await _astronautSocialMediaService.PostAstronautSocialMedia(astronautSocialMedia);
 
