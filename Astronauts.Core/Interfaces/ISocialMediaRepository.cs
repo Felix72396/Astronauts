@@ -1,5 +1,7 @@
-﻿namespace Astronauts.Core.Interfaces;
+﻿using Astronauts.Core.Entities;
 
-public interface ISocialMediaRepository
+namespace Astronauts.Core.Interfaces;
+
+public interface ISocialMediaRepository : IRepository<SocialMedia>
 {
 }

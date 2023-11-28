@@ -1,6 +1,6 @@
 ﻿namespace Astronauts.Core.QueryFilters;
 
-public class AstronautMissionQueryFilter
+public class BaseQueryFilter
 {
     public int? AstronautId { get; set; }
     public int PageSize { get; set; }

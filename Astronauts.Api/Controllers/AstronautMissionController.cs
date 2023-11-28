@@ -26,8 +26,14 @@ namespace Astronauts.Api.Controllers
             _uriService = uriService;
         }
 
+        /// <summary>
+        /// Retrieve all missions for astronaut
+        /// </summary>
+        /// <param name="filters">Filters to apply</param>
+        /// <returns></returns>
+
         [HttpGet]
-        public IActionResult GetMissionsByAstronaut([FromQuery] AstronautMissionQueryFilter filters)
+        public IActionResult GetMissionsByAstronaut([FromQuery] BaseQueryFilter filters)
         {
             var missions = _astronautMissionService.GetMissionsByAstronaut(filters);
             var missionDtos = _mapper.Map<IEnumerable<MissionDto>>(missions);
