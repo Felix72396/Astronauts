@@ -1,1 +1,62 @@
-<p>astronaut works!</p>
+<div class="astronaut util-display-flex util-justify-content-center util-align-items-start">
+    <table>
+        <caption class="util-center-text util-bold">
+            List of astronauts
+        </caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th class="header-full-name">FULL NAME</th>
+                <th class="header-nationality">NATIONALITY</th>
+                <th class="header-4">STATUS</th>
+                <th colspan="3">ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let astronaut of astronauts">
+                <td>{{ astronaut.id }}</td>
+                <td>{{ astronaut.name }}</td>
+                <td>{{ astronaut.nationality }}</td>
+                <td>{{ astronaut.status }}</td>
+                <td>
+                    <button (click)="editAstronaut(astronaut.id)">Edit</button>
+                    <button (click)="deleteAstronaut(astronaut.id)">Delete</button>
+                    <button (click)="seeAstronaut(astronaut.id)">See more</button>
+                </td>
+            </tr> -->
+            <tr>
+                <td>56</td>
+                <td>dwdw dwdwdwd dwdwdwd dwdwdwe</td>
+                <td>dwdwdwedwdw</td>
+                <td>dwdwdwdwdwd</td>
+                <td class="actions util-display-flex util-align-items-center util-justify-content-space-evenly">
+                    <button class="btn-edit" title="Edit"><i class="fa-solid fa-marker"></i></button>
+                    <button class="btn-delete" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                    <button class="btn-see" title="See more"><i class="fa-solid fa-eye"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>5648544</td>
+                <td>dwdw dwdwdwd </td>
+                <td>dwdwdwedwdw</td>
+                <td>dwdwdwdwdwd</td>
+                <td class="actions util-display-flex util-align-items-center util-justify-content-space-evenly">
+                    <button class="btn-edit" title="Edit"><i class="fa-solid fa-marker"></i></button>
+                    <button class="btn-delete" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                    <button class="btn-see" title="See more"><i class="fa-solid fa-eye"></i></button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                    <!-- colspan should match the number of columns in the table -->
+                    <!-- Pagination controls or information -->
+                    <button>Previous</button>
+                    <span>Page 1 of 5</span>
+                    <button>Next</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

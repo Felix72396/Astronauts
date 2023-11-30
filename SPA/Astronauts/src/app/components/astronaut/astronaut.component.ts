@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './astronaut.component.css'
 })
 export class AstronautComponent {
-
+  
 }

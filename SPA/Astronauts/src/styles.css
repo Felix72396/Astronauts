@@ -1,7 +1,12 @@
-
 :root{
     --bg-color: #1a154d;
     --white-text: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -19,7 +24,7 @@ app-root{
     border-inline: 1px dashed #fff;
     margin-inline: auto;
     grid-template-columns: 1fr;
-    grid-template-rows: 100px 1fr 100px;
+    grid-template-rows: 100px 60px 1fr 50px;
     background-color: var(--bg-color);
 }
 
@@ -41,6 +46,15 @@ app-header, app-footer{
     font-weight: bold;
 }
 
+.util-main-title{
+    background-color: rgb(5, 7, 37) !important;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-block: 10px;
+    border-block: 1px dashed #fff;
+}
+
 .util-display-grid{
     display: grid !important;
 }
@@ -51,6 +65,10 @@ app-header, app-footer{
 
 .util-display-flex{
     display: flex;
+}
+
+.util-flex-direction-column{
+    flex-direction: column;
 }
 
 .util-align-items-center{
