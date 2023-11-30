@@ -1,0 +1,88 @@
+
+:root{
+    --bg-color: #1a154d;
+    --white-text: #fff;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;   
+    overflow-x: hidden;
+    color: var(--white-text);
+    margin: 0;
+}
+
+app-root{
+    width: 1000px;
+    height: 100%;
+    border-inline: 1px dashed #fff;
+    margin-inline: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 100px;
+    background-color: var(--bg-color);
+}
+
+app-header, app-footer{
+    height: 100%;
+    width: 100%;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+}
+
+.util-center-text{
+    text-align: center;
+}
+
+.util-bold{
+    font-weight: bold;
+}
+
+.util-display-grid{
+    display: grid !important;
+}
+
+.util-place-content{
+    place-content: center;
+}
+
+.util-display-flex{
+    display: flex;
+}
+
+.util-align-items-center{
+    align-items: center;
+}
+
+.util-align-items-start{
+    align-items: start;
+}
+
+.util-align-items-end{
+    align-items: end;
+}
+
+.util-justify-content-center{
+    justify-content: center;
+}
+
+.util-justify-content-space-between{
+    justify-content: space-between;
+}
+
+.util-justify-content-space-evenly{
+    justify-content: space-evenly;
+}
+
+.util-display-none{
+    display: none;
+}
+
+.util-display-block{
+    display: block;
+}
+
+
