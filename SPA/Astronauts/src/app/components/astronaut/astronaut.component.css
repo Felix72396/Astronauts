@@ -15,7 +15,7 @@ table {
 
 td,
 th {
-    border: 1px solid #ddd;
+    border: 1px dashed #ddd;
     padding: 8px;
     text-align: center;
 }
@@ -41,12 +41,28 @@ tbody tr:hover {
     cursor: pointer;
 }
 
+.fa-check{
+    color: rgb(71, 255, 47);
+}
+
+.fa-xmark{
+    color: rgb(255, 47, 47);
+}
+
+.inactive-astronaut-row {
+    background-color: rgb(5, 7, 37) !important;
+}
+
 .header-full-name {
     width: 20rem;
 }
 
 .header-nationality {
     width: 12rem;
+}
+
+.header-id{
+    width: 5rem;
 }
 
 .actions button {
@@ -79,3 +95,80 @@ button.btn-delete:hover {
 button.btn-see:hover {
     background-color: rgb(12, 241, 210);
 }
+
+
+.previous, .next{
+    cursor: pointer;
+    padding: 5px 2px;
+    width: 50px;
+    font-size: 20px;
+    background-color: #2c2766;
+    border: 1px dashed #fff;
+    border-radius: 10px;
+    color: #fff;
+    margin-inline: 10px;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+}
+
+:where(.previous, .next):active
+{
+    transform: rotate(1turn) scale(1.2);
+    -webkit-transform: rotate(1turn) scale(1.2);
+    -moz-transform: rotate(1turn) scale(1.2);
+    -ms-transform: rotate(1turn) scale(1.2);
+    -o-transform: rotate(1turn) scale(1.2);
+}
+
+button:is(.previous, .next):hover{
+    background-color: #0b0735;
+}
+
+.btn-page{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 1px dashed #fff;
+    background-color: #0b0735;
+    color: #fff;
+    padding: 5px;
+    margin-inline: 5px;
+    width: 30px;
+    aspect-ratio: 1;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+}
+
+.btn-page:not(.active):hover{
+    background-color: #1c1477;
+    animation: spin .5s ease-in-out;
+    -webkit-animation: spin-grow .5s ease-in-out;
+}
+
+@keyframes spin-grow {
+    100%{
+        transform: rotate(1turn) scale(1.2);
+        -webkit-transform: rotate(1turn) scale(1.2);
+        -moz-transform: rotate(1turn) scale(1.2);
+        -ms-transform: rotate(1turn) scale(1.2);
+        -o-transform: rotate(1turn) scale(1.2);
+}
+}
+
+.active{
+    background-color: #fff;
+    color: #0b0735;
+    cursor: none;
+}
+
+
+

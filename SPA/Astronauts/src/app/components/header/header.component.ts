@@ -34,10 +34,10 @@ export class HeaderComponent {
     this.titleService.titleClicked.next('Astronaut list');
   }
 
-  setAstronautDetailTitle(event: Event) {
-    event.preventDefault();
-    this.titleService.titleClicked.next('Astronaut details');
-  }
+  // setAstronautDetailTitle(event: Event) {
+  //   event.preventDefault();
+  //   this.titleService.titleClicked.next('Astronaut details');
+  // }
 
   setAddAstronautTitle(event: Event) {
     event.preventDefault();

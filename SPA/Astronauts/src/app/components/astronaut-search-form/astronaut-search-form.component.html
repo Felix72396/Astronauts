@@ -1,0 +1,26 @@
+<form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+    <fieldset class="util-display-flex util-align-items-center util-justify-content-space-evenly" >
+        <legend>Search Form</legend>
+        <label for="id">
+            Id <input type="text" id="id" formControlName="id" title="Enter a numeric id" placeholder="Type id" maxlength="5">
+        </label>
+        <label for="nationality">
+            Nationality <input type="text" id="nationality" formControlName="nationality" title="Enter nationality" placeholder="Type nationality" maxlength="20">
+        </label>
+        <label>
+            <input type="radio" [value]="'active'" formControlName="status" title="Select active astronauts"> Active
+            <input type="radio" [value]="'inactive'" formControlName="status" title="Select inactive astronauts"> Inactive
+        </label>
+    </fieldset>
+
+
+    <button type="submit" class="btn-search" [value]="'search'" title="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+    <!-- <button type="submit" class="btn-reload" [value]="'reload'" title="Reload">
+        <i class="fa-solid fa-arrow-rotate-right"></i>
+    </button> -->
+
+    
+</form>
