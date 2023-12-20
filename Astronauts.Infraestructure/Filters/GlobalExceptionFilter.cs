@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Astronauts.Core.Exceptions;
 using System.Net;
 
+
 namespace Astronauts.Infraestructure.Filters;
 
 public class GlobalExceptionFilter : IExceptionFilter

@@ -22,6 +22,7 @@ export class AstronautSearchFormComponent {
 
   submitForm() {
     const formData = this.searchForm.value;
+    
     this.searchFormSubmitted.emit(formData);
     this.searchForm.reset();
   }

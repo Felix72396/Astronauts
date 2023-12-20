@@ -38,7 +38,7 @@ public class AstronautConfiguration : IEntityTypeConfiguration<Astronaut>
 
         builder.Property(e => e.BirthDate)
         .IsRequired()
-        .HasColumnType("datetime2"); // Or appropriate datetime type for your database
+        .HasColumnType("date"); // Or appropriate datetime type for your database
 
         builder.Property(e => e.Status)
         .IsRequired()

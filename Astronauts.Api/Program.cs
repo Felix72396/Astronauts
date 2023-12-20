@@ -9,6 +9,17 @@ IServiceCollection services = builder.Services;
 
 // Add services to the container.
 
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // Add your frontend URL here
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 services.AddControllers(options =>
 {
     options.Filters.Add<GlobalExceptionFilter>();
@@ -55,6 +66,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors("AllowSpecificOrigins");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

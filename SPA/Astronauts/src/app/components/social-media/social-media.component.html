@@ -1,1 +1,76 @@
-<p>social-media works!</p>
+<div class="social-media util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center util-w100 util-h100">
+    <table>
+        <caption class="util-center-text util-bold">
+            Social Media Links
+        </caption>
+        <thead>
+            <tr>
+                <th class="header-description">DESCRIPTION</th>
+                <th class="header-link">LINK</th>
+                <th>ICON</th>
+                <th colspan="2">ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let socialMedia of socialMediaList;">
+                <td class="util-ellipsis cell-description" [ngClass]="{ 'editable-cell': isEditing && editableRow === socialMedia.id }" [title]="socialMedia.description" [contentEditable]="editableRow === socialMedia.id">
+                    {{socialMedia.description}}
+                </td>
+                <td class="util-ellipsis cell-link" [title]="socialMedia.link" [ngClass]="{ 'editable-cell': isEditing && editableRow === socialMedia.id }" [contentEditable]="editableRow === socialMedia.id">
+                    {{socialMedia.link}}
+                </td>
+                <td>
+                    <i [class]="icons.getFontAwesomeSocialMediaIconClassesFromLink(socialMedia.link)"></i>
+                </td>
+
+                <td class="actions util-display-flex util-align-items-center util-justify-content-space-evenly">
+                    <button *ngIf="editableRow !== socialMedia.id" class="btn btn-edit shinning-element" (click)="toggleEditable(socialMedia.id)" title="Edit" style="--shinning-duration-secs: 5s; --shinning-delay-secs: -1s;">
+                        <i class="fa-solid fa-marker"></i>
+                    </button>
+
+                    <div *ngIf="isEditing && editableRow === socialMedia.id" class="actions util-display-flex util-align-items-center util-justify-content-space-evenly util-w100">
+                        <button class="btn btn-confirm shinning-element" (click)="confirmEdit(socialMedia.id)" title="Confirm" style="--shinning-duration-secs: 5s; --shinning-delay-secs: -1s;">
+                            <i class="fa-solid fa-check" style="color: rgb(2, 253, 44);"></i>
+                        </button>
+                        <button class="btn btn-cancel shinning-element" (click)="cancelEdit()" title="Cancel" style="--shinning-duration-secs: 5s; --shinning-delay-secs: -1s;">
+                            <i class="fa-solid fa-times" style="color: rgb(253, 2, 2);"></i>
+                        </button>
+                    </div>
+
+                    <button *ngIf="editableRow !== socialMedia.id" class="btn btn-delete shinning-element" title="Delete" (click)="deleteSocialMedia(socialMedia.id)" style="--shinning-duration-secs: 5s; --shinning-delay-secs: -1s;">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <form [formGroup]="addForm" (ngSubmit)="postSocialMedia()" class="social-media__add-link-form util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center util-w100">
+                        <fieldset
+                            class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center util-w100">
+                            <legend>Add link</legend>
+ 
+                            <input type="hidden" [value]="astronautId" formControlName="astronautId">
+                            <label for="description"
+                                class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center util-w100">
+                                <span>Description</span>
+                                <input type="text" id="description" formControlName="description"
+                                    placeholder="Enter description" maxlength="40" class="util-w100">
+                            </label>
+                            <label for="link"
+                                class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center util-w100">
+                                <span>Link</span>
+                                <input type="url" id="link" formControlName="link" placeholder="Enter link"
+                                    maxlength="100" class="util-w100">
+                            </label>
+                        </fieldset>
+                        <button type="submit" class="btn-submit shinning-element" title="Add link">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

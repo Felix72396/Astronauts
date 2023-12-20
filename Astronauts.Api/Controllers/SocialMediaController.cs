@@ -7,78 +7,70 @@ using Astronauts.Core.QueryFilters;
 using Astronauts.Infraestructure.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System.Net;
 
 namespace Astronauts.Api.Controllers;
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SocialMediaController : ControllerBase
+[Route("api/[controller]")]
+[ApiController]
+public class SocialMediaController : ControllerBase
+{
+    private readonly ISocialMediaService _socialMediaService;
+    private readonly IMapper _mapper;
+    public SocialMediaController(ISocialMediaService socialMediaService, IMapper mapper)
     {
-        private readonly ISocialMediaService _socialMediaService;
-        private readonly IMapper _mapper;
-        private readonly IUriService _uriService;
-        public SocialMediaController(ISocialMediaService socialMediaService, IMapper mapper, IUriService uriService)
-        {
-            _socialMediaService = socialMediaService;
-            _mapper = mapper;
-            _uriService = uriService;
-        }
+        _socialMediaService = socialMediaService;
+        _mapper = mapper;
+    }
 
-        /// <summary>
-        /// Retrieve all social media
-        /// </summary>
-        /// <param name="filters">Filters to apply</param>
-        /// <returns></returns>
-        [HttpGet(Name = nameof(GetSocialMedia))]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<SocialMediaDto>>))]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public IActionResult GetSocialMedia([FromQuery] BaseQueryFilter filters)
-        {
-            var socialMedia = _socialMediaService.GetSocialMedia(filters);
-            var socialMediaDtos = _mapper.Map<IEnumerable<SocialMediaDto>>(socialMedia);
+    /// <summary>
+    /// Retrieve all social media
+    /// </summary>
+    /// <param name="filters">Filters to apply</param>
+    /// <returns></returns>
 
-            var metadata = new MetaData
-            {
-                TotalCount = socialMedia.TotalCount,
-                PageSize = socialMedia.PageSize,
-                CurrentPage = socialMedia.CurrentPage,
-                TotalPages = socialMedia.TotalPages,
-                HasPreviousPage = socialMedia.HasPreviousPage,
-                HasNextPage = socialMedia.HasNextPage
-                //PreviousPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetMissions)))?.ToString(),
-                //NextPageUrl = _uriService?.GetAstronautPaginationUri(filters, Url?.RouteUrl(nameof(GetMissions)))?.ToString()
-            };
+    [HttpGet]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<SocialMediaDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public IActionResult GetAllByAstronautId([FromQuery] int astronautId)
+    {
+        var socialMedia = _socialMediaService.GetSocialMediaByAstronaut(astronautId);
+        var socialMediaDtos = _mapper.Map<IEnumerable<SocialMediaDto>>(socialMedia);
 
-            var response = new ApiResponse<IEnumerable<SocialMediaDto>>(socialMediaDtos)
-            {
-                Meta = metadata
-            };
+        var response = new ApiResponse<IEnumerable<SocialMediaDto>>(socialMediaDtos);
 
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+        return Ok(response);
+    }
 
-            return Ok(response);
-        }
+    [HttpPost]
+    public async Task<IActionResult> Post(SocialMediaDto socialMediaDto)
+    {
+        var socialMedia = _mapper.Map<SocialMedia>(socialMediaDto);
+        await _socialMediaService.PostSocialMedia(socialMedia);
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetSocialMedia(int id)
-        {
-            var socialMedia = await _socialMediaService.GetSocialMedia(id);
-            var socialMediaDto = _mapper.Map<SocialMediaDto>(socialMedia);
-            var response = new ApiResponse<SocialMediaDto>(socialMediaDto);
-            return Ok(response);
-        }
+        socialMediaDto = _mapper.Map<SocialMediaDto>(socialMedia);
+        var response = new ApiResponse<SocialMediaDto>(socialMediaDto);
+        return Ok(response);
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> PostSocialMedia(SocialMediaDto socialMediaDto)
-        {
-            var socialMedia = _mapper.Map<SocialMedia>(socialMediaDto);
-            await _socialMediaService.PostSocialMedia(socialMedia);
+    [HttpPut]
+    public async Task<IActionResult> Put(int id, SocialMediaDto postDto)
+    {
+        var post = _mapper.Map<SocialMedia>(postDto);
+        post.Id = id;
+        var result = await _socialMediaService.UpdateSocialMedia(post);
+        var response = new ApiResponse<bool>(result);
+        return Ok(post);
+    }
 
-            socialMediaDto = _mapper.Map<SocialMediaDto>(socialMedia);
-            var response = new ApiResponse<SocialMediaDto>(socialMediaDto);
-            return Ok(response);
-        }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var result = await _socialMediaService.DeleteSocialMedia(id);
+        var response = new ApiResponse<bool>(result);
 
+        return Ok(response);
+    }
 }

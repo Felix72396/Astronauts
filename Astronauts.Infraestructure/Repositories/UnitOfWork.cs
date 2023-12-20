@@ -9,7 +9,6 @@ public class UnitOfWork : IUnitOfWork
     private readonly IAstronautRepository _astronautRepository;
     private readonly IMissionRepository _missionRepository;
     private readonly IAstronautMissionRepository _astronautMissionRepository;
-    private readonly IAstronautSocialMediaRepository _astronautSocialMediaRepository;
     private readonly ISocialMediaRepository _socialMediaRepository;
     private readonly ISecurityRepository _securityRepository;
 
@@ -22,7 +21,6 @@ public class UnitOfWork : IUnitOfWork
     public IMissionRepository MissionRepository => _missionRepository ?? new MissionRepository(_context);
     public ISocialMediaRepository SocialMediaRepository => _socialMediaRepository ?? new SocialMediaRepository(_context);
     public IAstronautMissionRepository AstronautMissionRepository => _astronautMissionRepository ?? new AstronautMissionRepository(_context);
-    public IAstronautSocialMediaRepository AstronautSocialMediaRepository => _astronautSocialMediaRepository ?? new AstronautSocialMediaRespository(_context);
     public ISecurityRepository SecurityRepository => _securityRepository ?? new SecurityRepository(_context);
 
     public void Dispose()

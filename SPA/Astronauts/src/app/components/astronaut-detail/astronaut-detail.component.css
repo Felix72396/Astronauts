@@ -1,0 +1,164 @@
+.astronaut-detail{
+    position: relative;
+}
+
+.astronaut-detail__rocket{
+    width: 35%;
+    border-radius: 400px 400px 20% 20%;
+    border: 1px dashed #fff;
+    background-color: #0b0735;
+    padding: 20px;
+    margin-bottom: 135px;
+    -webkit-border-radius: 400px 400px 20% 20%;
+    -moz-border-radius: 400px 400px 20% 20%;
+    -ms-border-radius: 400px 400px 20% 20%;
+    -o-border-radius: 400px 400px 20% 20%;
+    box-shadow: 0 0 0 0 #fff;
+    position: relative;
+    left: 50%;
+    transform: translateY(0) scale(1) translateX(-50%);
+    z-index: 1;
+    transition: 1s transform ease-in-out, .5s box-shadow ease-in-out;
+    -webkit-transition: 1s transform ease-in-out, .5s box-shadow ease-in-out;
+    -moz-transition: 1s transform ease-in-out, .5s box-shadow ease-in-out;
+    -ms-transition: 1s transform ease-in-out, .5s box-shadow ease-in-out;
+    -o-transition: 1s transform ease-in-out, .5s box-shadow ease-in-out;
+    -webkit-transform: translateY(0) scale(1) translateX(-50%);
+    -moz-transform: translateY(0) scale(1) translateX(-50%);
+    -ms-transform: translateY(0) scale(1) translateX(-50%);
+    -o-transform: translateY(0) scale(1) translateX(-50%);
+}
+
+.astronaut-detail__rocket::before, .astronaut-detail__rocket::after{
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 340px;
+    top: 70%;
+    border-radius: 50%;
+    background-color: inherit;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 1px dashed #fff;
+    z-index: 1;
+}
+
+.astronaut-detail__rocket::before{
+    left: -55px;
+    transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+}
+
+.astronaut-detail__rocket::after{
+    right: -55px;
+    transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+}
+
+.take-off{
+    transform: translateY(-250%) translateX(-50%) scale(.1) rotateY(170deg) rotateZ(30deg) skewX(5deg);
+    -webkit-transform: translateY(-250%) translateX(-50%) scale(.1) rotateY(170deg) rotateZ(30deg) skewX(5deg);
+    -moz-transform: translateY(-250%) translateX(-50%) scale(.1) rotateY(170deg) rotateZ(30deg) skewX(5deg);
+    -ms-transform: translateY(-250%) translateX(-50%) scale(.1) rotateY(170deg) rotateZ(30deg) skewX(5deg);
+    -o-transform: translateY(-250%) translateX(-50%) scale(.1) rotateY(170deg) rotateZ(30deg) skewX(5deg);
+}
+
+.boost{
+    box-shadow: 0 100px 200px 0 #fff,    0 300px 200px -20px #fff,    0 500px 200px -40px #fff,    0 700px 200px -80px #fff,    0 900px 200px -100px #fff,    0 1100px 200px -120px #fff,    0 1300px 200px -140px #fff;
+}
+
+.astronaut-detail__photo{
+    width: 120px;
+    aspect-ratio: 1;
+    margin-inline: auto;
+    margin-block: 5px;
+    display: block;
+    border: 1px dashed #fff;
+}
+
+h2:not(.astronaut-detail__description-caption){
+    margin-bottom: 5px;
+}
+
+label, .astronaut-detail__description-caption{
+    font-size: 15px;
+    padding: 3px;
+    border-radius: 15px 15px 0 0;
+    -webkit-border-radius: 15px 15px 0 0;
+    -moz-border-radius: 15px 15px 0 0;
+    -ms-border-radius: 15px 15px 0 0;
+    -o-border-radius: 15px 15px 0 0;
+    background-color: rgb(5, 7, 37);
+    border: 1px dashed #fff;
+}
+
+.astronaut-detail__rocket span, p{
+    /* padding-block: 5px; */
+    font-size: 18px;
+    background-color: #fff;
+    color: rgb(5, 7, 37);
+}
+
+h2 span, .astronaut-detail__description{
+    border-radius: 0 0 25px 25px;
+    -webkit-border-radius: 0 0 25px 25px;
+    -moz-border-radius: 0 0 25px 25px;
+    -ms-border-radius: 0 0 25px 25px;
+    -o-border-radius: 0 0 25px 25px;
+}
+
+p{
+    padding: 5px;
+    overflow: hidden;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    -moz-hyphens: manual;
+    -ms-hyphens: manual;
+}
+
+.astronaut-detail__btn-see-more{
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    cursor: pointer;
+    bottom: -90px;
+    position: absolute !important;
+    width: 250px;
+    height: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    border: 1px dashed #fff;
+    background-color: rgb(5, 7, 37);
+    color: #fff;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -ms-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    --shinning-duration-secs: 5s; 
+    --shinning-delay-secs: 0s;
+}
+
+.astronaut-detail__btn-see-more:hover{
+    background-color: #fff;
+    z-index: 0;
+    outline-offset: 10px;
+    color: #1a154d;
+}
+

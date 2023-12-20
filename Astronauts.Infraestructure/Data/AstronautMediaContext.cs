@@ -13,7 +13,6 @@ public partial class AstronautMediaContext : DbContext
     public virtual DbSet<Mission> Missions { get; set; }
     public virtual DbSet<SocialMedia> SocialMedia { get; set; }
     public virtual DbSet<AstronautMission> AstronautMissions { get; set; }
-    public virtual DbSet<AstronautSocialMedia> AstronautSocialMedia { get; set; }
     public virtual DbSet<Security> Securities { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,23 +35,7 @@ public partial class AstronautMediaContext : DbContext
                     }
                 );
 
-        modelBuilder.Entity<Astronaut>()
-               .HasMany(a => a.SocialMedia)
-               .WithMany(sm => sm.Astronauts)
-               .UsingEntity<AstronautSocialMedia>(
-                   asm => asm.HasOne(prop => prop.SocialMedia)
-                   .WithMany()
-                   .HasForeignKey(prop => prop.SocialMediaId),
-
-                   asm => asm.HasOne(prop => prop.Astronaut)
-                   .WithMany()
-                   .HasForeignKey(prop => prop.AstronautId),
-
-                   asm =>
-                   {
-                       asm.HasKey(prop => new { prop.AstronautId, prop.SocialMediaId });
-                   }
-               );
+        
 
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }

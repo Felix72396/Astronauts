@@ -1,0 +1,97 @@
+.astronaut-social-media{
+    height: auto;
+    position: relative;
+    width: 60%;
+    margin-inline: auto;
+    z-index: 2;
+    background-color: #0b0735;
+    border: 1px dashed #fff;
+}
+
+.astronaut-social-media__item-container{
+    padding: 15px;
+}
+
+.astronaut-social-media__item{
+    height: auto;
+    margin-bottom: 15px;
+    width: 100%;
+    background-color: #070427;
+}
+
+.astronaut-social-media__item:last-of-type{
+    margin-bottom: 0;
+}
+
+.astronaut-social-media__link-social-media{
+    padding: 10px;
+    font-size: 2rem;
+    position: absolute !important;
+    top: -40px;
+    left: 50%;
+    border-radius: 50%;
+    color: #fff;
+    background-color: rgb(5, 7, 37);
+    border: 1px dashed #fff;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: .3s all ease-in-out;
+    cursor: pointer;
+    --shinning-duration-secs: 8s;
+    --shining-delay-secs: 0s;
+    --opacity: .8;
+}
+
+.astronaut-social-media__link-social-media:hover{
+    background-color: #0b0735;
+    transform: translate(-50%) scale(1.1);
+    -webkit-transform: translate(-50%) scale(1.1);
+    -moz-transform: translate(-50%) scale(1.1);
+    -ms-transform: translate(-50%) scale(1.1);
+    -o-transform: translate(-50%) scale(1.1);
+}
+
+a{
+    text-decoration: none;
+    display: block;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin-inline: 10px;
+    background-color: rgb(5, 7, 37);
+    border: 1px dashed #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -ms-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    cursor: pointer;
+    --shinning-duration-secs: 5s;
+    --shining-delay-secs: 0s;
+    --opacity: .8;
+}
+
+a:hover{
+    background-color: #0b0735;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+i{
+    font-size: 2rem;
+    color: #fff;
+}

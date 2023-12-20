@@ -1,6 +1,5 @@
-﻿using FluentValidation;
-using Astronauts.Core.DTOs;
-using Astronauts.Core.Entities;
+﻿using Astronauts.Core.DTOs;
+using FluentValidation;
 
 namespace Astronauts.Infraestructure.Validators;
 
@@ -14,16 +13,16 @@ public class AstronautValidator : AbstractValidator<AstronautDto>
 
         RuleFor(astronaut => astronaut.FirstName)
         .NotEmpty()
-        .WithMessage("The firstname mustn't be empty or null.");
+        .WithMessage("The first name mustn't be empty or null.");
 
 
         RuleFor(astronaut => astronaut.LastName)
         .MaximumLength(25)
-        .WithMessage("The lastname must have max 25 characteres.");
+        .WithMessage("The last name must have max 25 characteres.");
 
         RuleFor(astronaut => astronaut.LastName)
         .NotEmpty()
-        .WithMessage("The lastname mustn't be empty or null.");
+        .WithMessage("The last name mustn't be empty or null.");
 
 
         RuleFor(astronaut => astronaut.Nationality)
@@ -39,10 +38,6 @@ public class AstronautValidator : AbstractValidator<AstronautDto>
         .MaximumLength(200)
         .WithMessage("The description must have max 200 characteres.");
 
-        RuleFor(astronaut => astronaut.Description)
-        .NotEmpty()
-        .WithMessage("The description mustn't be empty or null.");
-
 
         RuleFor(astronaut => astronaut.BirthDate)
         .NotEmpty()
@@ -50,7 +45,7 @@ public class AstronautValidator : AbstractValidator<AstronautDto>
 
         RuleFor(astronaut => astronaut.BirthDate)
        .Must(birthDate => CheckIsOld(birthDate))
-       .WithMessage("There's no proffesional astronauts yourger than 18.");
+       .WithMessage("There's no proffesional astronaut yourger than 18.");
     }
 
     public bool CheckIsOld(DateTime? birthDate)

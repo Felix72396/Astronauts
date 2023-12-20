@@ -1,0 +1,99 @@
+.astronaut-mission__btn-return-to-rocket{
+    font-size: 25px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    margin-inline: auto;
+    width: 100px;
+    aspect-ratio: 1;
+    border: 1px dashed #fff;
+    background-color: #0b0735;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -ms-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    --shinning-duration-secs: 5s; 
+    --shinning-delay-secs: 0s;
+}
+
+.astronaut-mission__btn-return-to-rocket:hover{
+    background-color: #120c53;
+    font-size: 40px;
+}
+
+.astronaut-mission__missions-caption{
+    background-color: rgb(5, 7, 37);
+    color: #fff;
+    padding-block: 10px;
+}
+
+.astronaut-mission__mission-accordion, .astronaut-mission__missions-caption{
+    margin-inline: auto;
+    width: 70%;
+}
+
+.astronaut-mission__btn-mission-accordion{
+    font-size: 20px;
+    background-color: #0b0735;
+    border: 1px dashed #fff;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -ms-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    --shinning-duration-secs: 5s; 
+    --shinning-delay-secs: 0s;
+}
+
+.astronaut-mission__btn-mission-accordion h3{
+    padding: 10px;
+}
+
+.astronaut-mission__btn-mission-accordion:hover{
+    background-color: #120c53;
+}
+
+.astronaut-mission__btn-mission-accordion i{
+    position: absolute;
+    left: -15px;
+}
+
+.astronaut-mission__mission-description {
+    transition: height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out, overflow 0.5s ease-in-out;
+    max-height: 1000px; /* Set a maximum height */
+    opacity: 1;
+    padding-block: 5px;
+    font-size: 18px;
+    background-color: #fff;
+    color: rgb(5, 7, 37);
+    padding: 5px;
+    overflow: hidden;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    -moz-hyphens: manual;
+    -ms-hyphens: manual;
+  }
+  
+
+  .no-collapse {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+
+
+
+
+

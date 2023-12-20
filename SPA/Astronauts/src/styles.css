@@ -1,3 +1,5 @@
+@import url(animations.css);
+
 :root{
     --bg-color: #1a154d;
     --white-text: #fff;
@@ -10,18 +12,20 @@
 }
 
 body{
-    width: 100vw;
+    width: 1000px;
+    min-height: 100vh;
     height: auto;
+    margin: 0 auto;
     
     font-family: 'Arial', sans-serif;   
     overflow-x: hidden;
     color: var(--white-text);
-    margin: 0;
 }
 
 app-root{
-    width: 1000px;
+    width: 100%;
     min-height: 100vh;
+    height: auto;
     border-inline: 1px dashed #fff;
     margin-inline: auto;
     grid-template-columns: 1fr;
@@ -29,18 +33,24 @@ app-root{
     background-color: var(--bg-color);
 }
 
-app-header, app-footer{
-    height: 100%;
+app-header, app-footer, app-astronaut-detail, app-social-media{
+    height: auto;
     width: 100%;
+    z-index: 10;
 }
 
 .main{
     width: 100%;
-    height: 100%;
+    height: auto;
+    padding: 10px;
 }
 
 .util-center-text{
     text-align: center;
+}
+
+.util-justify-text{
+    text-align: justify;
 }
 
 .util-bold{
@@ -53,6 +63,16 @@ app-header, app-footer{
 
 .util-h100{
     height: 100%;
+}
+
+.util-underlined{
+    text-decoration: underline;
+}
+
+.util-ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .util-main-title{

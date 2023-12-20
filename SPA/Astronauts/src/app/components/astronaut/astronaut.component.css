@@ -37,7 +37,7 @@ tbody tr:nth-of-type(even) {
 }
 
 tbody tr:hover {
-    background-color: rgb(5, 7, 37);
+    background-color: rgb(5, 7, 37) !important;
     cursor: pointer;
 }
 
@@ -50,7 +50,7 @@ tbody tr:hover {
 }
 
 .inactive-astronaut-row {
-    background-color: rgb(5, 7, 37) !important;
+    background-color: rgb(14, 17, 63) !important;
 }
 
 .header-full-name {
@@ -77,6 +77,7 @@ tbody tr:hover {
 .btn-edit,
 .btn-delete,
 .btn-see {
+    --opacity: .5 !important;
     transition: 0.3s ease-in-out;
     -webkit-transition: 0.3s ease-in-out;
     -moz-transition: 0.3s ease-in-out;
@@ -116,11 +117,11 @@ button.btn-see:hover {
 
 :where(.previous, .next):active
 {
-    transform: rotate(1turn) scale(1.2);
-    -webkit-transform: rotate(1turn) scale(1.2);
-    -moz-transform: rotate(1turn) scale(1.2);
-    -ms-transform: rotate(1turn) scale(1.2);
-    -o-transform: rotate(1turn) scale(1.2);
+    transform: rotate(calc(var(--i) * .5turn)) scale(1.1);
+    -webkit-transform: rotate(calc(var(--i) * .5turn)) scale(1.1);
+    -moz-transform: rotate(calc(var(--i) * .5turn)) scale(1.1);
+    -ms-transform: rotate(calc(var(--i) * .5turn)) scale(1.1);
+    -o-transform: rotate(calc(var(--i) * .5turn)) scale(1.1);
 }
 
 button:is(.previous, .next):hover{
@@ -146,6 +147,8 @@ button:is(.previous, .next):hover{
     -moz-transition: .3s ease-in-out;
     -ms-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
+    /* --shinning-duration-secs: 3s; */
+    --shinning-delay-secs: 0s;
 }
 
 .btn-page:not(.active):hover{

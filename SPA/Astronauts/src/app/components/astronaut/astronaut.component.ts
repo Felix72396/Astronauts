@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AstronautSearchFormComponent } from '../astronaut-search-form/astronaut-search-form.component';
 import { RouterLink } from '@angular/router';
 import { TitleService } from '../../services/title.service';
+import { Astronaut } from '../../interfaces/astronaut';
 
 @Component({
   selector: 'app-astronaut',
@@ -17,35 +18,55 @@ import { TitleService } from '../../services/title.service';
   templateUrl: './astronaut.component.html',
   styleUrl: './astronaut.component.css',
 })
-export class AstronautComponent implements OnInit {
-  constructor(private titleService: TitleService) {}
-
+export class AstronautComponent implements OnInit 
+{
   httpClient = inject(HttpClient);
+  titleService = inject(TitleService);
 
-  astronauts: Array<any> = [];
+  astronautList: Array<Astronaut> = [];
   currentPage: number = 1;
   totalPages: number = 1;
-  pageSize: number = 5;
+  // pageSize: number = 5;
   totalCount: number = 0;
   hasNextPage: boolean = false;
   hasPreviousPage: boolean = false;
   nextPageUrl: string = '';
   previousPageUrl: string = '';
 
-  apiUrl = `http://localhost:5000/api/Astronaut?PageNumber=1&PageSize=${this.pageSize}`;
+  params = {
+    AstronautId: null,
+    Nationality: null,
+    Status: null,
+    PageNumber: 1,
+    PageSize: 5,
+  }
 
   ngOnInit(): void {
-    this.fetchAstronauts();
+    this.getAstronauts();
   }
 
-  setAstronautDetailTitle(event: Event) {
-    event.preventDefault();
-    this.titleService.titleClicked.next('Astronaut details');
+  getUrl()
+  {
+    let url: string = `http://localhost:5000/api/Astronaut?PageNumber=${this.currentPage}&PageSize=${this.params.PageSize}`;
+
+    if(this.params.AstronautId !== null && this.params.AstronautId !== "")
+      url += `&AstronautId=${this.params.AstronautId}`;
+
+    if(this.params.Nationality !== null && this.params.Nationality !== "")
+      url += `&Nationality=${this.params.Nationality}`;
+
+    if(this.params.Status !== null && this.params.Status !== "")
+      url += `&Status=${this.params.Status}`;
+
+      console.log(url)
+    return url;
   }
 
-  fetchAstronauts() {
-    this.httpClient.get(this.apiUrl).subscribe((response: any) => {
-      this.astronauts = response.data;
+  getAstronauts() {
+    let apiUrl: string = this.getUrl();
+
+    this.httpClient.get(apiUrl).subscribe((response: any) => {
+      this.astronautList = response.data;
       this.currentPage = response.meta.currentPage;
       this.totalPages = response.meta.totalPages;
       this.hasPreviousPage = response.meta.hasPreviousPage;
@@ -62,43 +83,38 @@ export class AstronautComponent implements OnInit {
 
   previousPage() {
     if (this.currentPage > 1) {
-      this.apiUrl = `http://localhost:5000/api/Astronaut?PageNumber=${--this.currentPage}&PageSize=${this.pageSize}`;
-      this.fetchAstronauts();
+      this.currentPage--;
+      this.getAstronauts();
     }
   }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
-      this.apiUrl = `http://localhost:5000/api/Astronaut?PageNumber=${++this.currentPage}&PageSize=${this.pageSize}`;
-      this.fetchAstronauts();
+      this.currentPage++;
+      this.getAstronauts();
     }
   }
 
   selectPage(pageNumber: number) {
-    this.apiUrl = `http://localhost:5000/api/Astronaut?PageNumber=${pageNumber}&PageSize=${this.pageSize}`;
-    this.fetchAstronauts();
+    this.currentPage = pageNumber;
+    this.getAstronauts();
   }
 
   handleSearchForm(formData: any): void {
-    let params: string = '';
-
     const { id, nationality, status } = formData;
+    this.params.AstronautId = id;
+    this.params.Nationality = nationality;
+    this.params.Status = status;
 
-    if (id) params = `&AstronautId=${id}`;
-    if (nationality) params += `&Nationality=${nationality}`;
-    if (status) {
-      params += `&Status=${status === 'active'}`;
-    }
+    this.currentPage = 1;
+  
+    this.getAstronauts();
+  }
 
-    this.apiUrl = `http://localhost:5000/api/Astronaut?PageNumber=1&PageSize=${this.pageSize}${params}`;
-
-    if (params !== "")
-      this.fetchAstronauts();
-
-    if(this.totalCount === 0)
-    {
-      this.fetchAstronauts();
-    }
-
+  setAstronautDetailTitle(event: Event) {
+    event.preventDefault();
+    let title: string = 'Astronaut details';
+    this.titleService.titleClicked.next(title);
+    this.titleService.setSelectedTitleToLocalStorage(title);
   }
 }

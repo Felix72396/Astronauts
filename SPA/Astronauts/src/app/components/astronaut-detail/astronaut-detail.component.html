@@ -1,1 +1,68 @@
-<p>astronaut-detail works!</p>
+<div class="astronaut-detail util-w100 util-h100">
+    <div class="astronaut-detail__rocket">
+        <img class="astronaut-detail__photo" [src]="
+        astronautImageUrl
+          ? astronautImageUrl
+          : '../../../assets/images/no-photo.png'
+      " alt="Astronaut Photo" />
+        <h2
+            class="astronaut-detail__full-name-caption util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <label class="util-w100 util-center-text">Full Name</label>
+            <span class="util-display-block util-w100 util-center-text">{{
+                astronaut.firstName + " " + astronaut.lastName
+                }}</span>
+        </h2>
+
+        <h2
+            class="astronaut-detail__nationality-caption util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <label class="util-w100 util-center-text">Nationality</label>
+            <span class="util-display-block util-w100 util-center-text">{{
+                astronaut.nationality
+                }}</span>
+        </h2>
+
+        <h2
+            class="astronaut-detail__birth-date-caption util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <label class="util-w100 util-center-text">Birth Date</label>
+            <span class="util-display-block util-w100 util-center-text">{{
+                astronaut.birthDate | date : "yyyy-MM-dd"
+                }}</span>
+        </h2>
+
+        <h2
+            class="astronaut-detail__age-caption util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <label class="util-w100 util-center-text">Age</label>
+            <span class="util-display-block util-w100 util-center-text">{{
+                age
+                }}</span>
+        </h2>
+
+        <h2
+            class="astronaut-detail__status-caption util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <label class="util-w100 util-center-text">Status</label>
+            <span class="util-display-block util-w100 util-center-text">{{
+                astronaut.status ? "Active" : "Inactive"
+                }}</span>
+        </h2>
+
+        <div
+            class="astronaut-detail__description-container util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <h2 class="astronaut-detail__description-caption util-w100 util-center-text">
+                Description
+            </h2>
+            <p class="astronaut-detail__description util-w100 util-center-text">
+                {{ astronaut.description ? astronaut.description : "No description" }}
+            </p>
+        </div>
+
+        <button class="astronaut-detail__btn-see-more shinning-element" (click)="takeOff();" title="See missions">
+            SEE MORE
+        </button>
+    </div>
+    <app-astronaut-social-media [id]="astronautId" />
+
+    <app-astronaut-mission [id]="astronautId" (returnRocket) = "returnRocket()" />
+    <!-- <app-social-media [id]="id"/> -->
+    
+
+</div>

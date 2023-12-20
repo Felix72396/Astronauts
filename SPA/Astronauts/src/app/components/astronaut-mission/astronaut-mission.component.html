@@ -1,0 +1,30 @@
+<div class="astronaut-mission util-w100 util-h100 util-display-none">
+    <button class="astronaut-mission__btn-return-to-rocket util-display-block shinning-element" title="Return to rocket" (click)="triggerReturnRocket()">
+        <i class="fa-solid fa-rocket"></i>
+    </button>
+
+    <h2 class="astronaut-mission__missions-caption util-center-text">
+        Missions
+    </h2>
+
+    <div class="astronaut-mission__mission-accordion">
+        <div *ngFor="let mission of missionList; let i = index" class="astronaut-mission__accordion-item">
+            <button class="astronaut-mission__btn-mission-accordion util-bold util-center-text util-w100"
+                    (click)="toggleAccordion(i)">
+              <i [ngClass]="{ 'fa-solid fa-plus': currentAccordionIndex !== i, 'fa-solid fa-minus': currentAccordionIndex === i }"
+                 [ngStyle]="{ color: currentAccordionIndex === i ? 'rgb(240, 16, 16)' : 'rgb(61, 240, 16)' }">
+              </i>
+              <h3 class="util-w100 util-h100 shinning-element">{{ mission.title }}</h3>
+            </button>
+        
+            <p class="astronaut-mission__mission-description util-justify-text"
+               [class.no-collapse]="currentAccordionIndex !== i"
+               [style.height]="currentAccordionIndex === i ? 'auto' : '0'"
+               [style.padding]="currentAccordionIndex === i ? '10px' : '0'"
+               [style.opacity]="currentAccordionIndex === i ? '1' : '0'"
+               [style.overflow]="currentAccordionIndex === i ? 'visible' : 'hidden'">
+              {{ mission.description }}
+            </p>
+        </div>
+    </div>
+</div>

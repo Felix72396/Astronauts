@@ -27,7 +27,7 @@ public class AstronautService : IAstronautService
             astronauts = astronauts.Where(x => x.Id == filters.AstronautId);
 
         if (filters.Nationality != null)
-            astronauts = astronauts.Where(x => x.Nationality == filters.Nationality); 
+            astronauts = astronauts.Where(x => x.Nationality.ToLower().Contains(filters.Nationality.ToLower())); 
 
         if (filters.Status != null)
             astronauts = astronauts.Where(x => x.Status == filters.Status);

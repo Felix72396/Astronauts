@@ -1,0 +1,14 @@
+<div class="astronaut-social-media util-w100 util-h100">
+    <a class="astronaut-social-media__link-social-media shinning-element util-display-grid util-place-content" title="Go to social media panel" [routerLink]="['/social-media', astronautId]">
+        <i class="fa-solid fa-users"></i>
+    </a>
+
+    <div class="astronaut-social-media__item-container util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center util-w100 util-h100">
+        <h3 *ngFor="let socialMedia of socialMediaList;" class="astronaut-social-media__item util-display-flex util-justify-content-center util-justify-content-center">
+            <a [href]="socialMedia.link" [title]="socialMedia.description" target="_blank" rel="noopener" class="util-display-grid util-place-content shinning-element">
+                <i [class]="icons.getFontAwesomeSocialMediaIconClassesFromLink(socialMedia.link)"></i>
+            </a>
+            <span class="util-display-grid util-place-content">{{socialMedia.description}}</span>
+        </h3>  
+    </div>
+</div>

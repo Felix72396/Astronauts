@@ -1,0 +1,136 @@
+fieldset{
+    min-height: 80px;
+    padding: 20px;
+}
+
+fieldset, legend, button.btn-add{
+    border: 1px dashed #fff;
+    border-radius: 15px;
+}
+
+legend{
+    text-align: center;
+    padding: 10px 100px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin-inline: auto;
+}
+
+label{
+    width: 100%;
+    background-color: #09062caf;
+    border-radius: 25px;
+    padding: 8px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+[type="text"],[type="radio"], [type="date"], textarea{
+    border: 0;
+    outline: 1px dashed #fff;
+    outline-offset: 0px;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -ms-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+}
+
+.add-astronaut__radio-container{
+    border-radius: 25px;
+    padding: 8px;
+    margin-top: 5px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    background-color: #fff;
+}
+
+.add-astronaut__radio-container span{
+    color: #09062c;
+}
+
+[type="radio"]
+{
+    margin-inline: 10px;
+    accent-color: #09062c;
+    outline: 1px dashed #09062c;
+    cursor: pointer;
+}
+
+[type=text], [type="date"], textarea{
+    width: 100%;
+    padding: 5px;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin: 5px;
+}
+
+:where([type=text],[type="radio"], [type="date"], textarea):focus{
+    outline-offset: 3px;
+}
+
+[type="file"]
+{
+    padding: 5px;
+    border-radius: 25px;
+    background-color: #fff;
+    color: #09062c;
+    cursor: pointer;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+button.btn-add{
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #09062c;
+    color: #fff;
+    font-size: 2rem;
+    margin-top: 10px;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    --shinning-duration-secs: 5s; 
+    --shinning-delay-secs: 0s;
+}
+
+:is(button.btn-add):hover{
+    background-color: rgb(17, 138, 138);
+}
+
+textarea{
+    resize: none;
+}
+
+.add-astronaut__photo{
+    width: 200px;
+    aspect-ratio: 1;
+    border: 2px dashed #fff;
+    margin-bottom: 10px;
+}
+
+.fa-asterisk{
+    color: #ee1111;
+}

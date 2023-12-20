@@ -1,12 +1,12 @@
-﻿using Astronauts.Core.CustomEntities;
-using Astronauts.Core.Entities;
-using Astronauts.Core.QueryFilters;
+﻿using Astronauts.Core.Entities;
 
 namespace Astronauts.Core.Interfaces;
 
 public interface ISocialMediaService
 {
-    PagedList<SocialMedia> GetSocialMedia(BaseQueryFilter filters);
-    Task<SocialMedia> GetSocialMedia(int id);
+    IEnumerable<SocialMedia> GetSocialMediaByAstronaut(int id);
     Task PostSocialMedia(SocialMedia socialMedia);
+    Task<bool> UpdateSocialMedia(SocialMedia socialMedia);
+    Task<bool> DeleteSocialMedia(int id);
+
 }

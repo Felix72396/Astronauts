@@ -1,19 +1,19 @@
 <header class="header header--bg-color util-display-flex">
     <nav class="header__nav util-display-flex util-justify-content-space-between">
-        <div class="header__logo">        
+        <div class="header__logo util-display-flex util-align-items-center util-justify-content-center shinning-element">        
             <a class="header__logo-link" routerLink="" (click)="setHomeTitle($event)">
-                <img src="../../../assets/images/astronaut.png" alt="Astronaut logo">
+                <img src="../../../assets/images/astronaut.png" alt="Astronaut logo" class="spinning-element">
             </a>
         </div>
         <ul class="header__nav-list util-display-flex util-align-items-center util-justify-content-space-evenly">
             <li class="header__nav-list-item">
-                <a style="--i:3" class="header__nav-list-item-link" routerLink="" (click)="setHomeTitle($event)">HOME</a>
+                <a style=" --shinning-duration-secs: 5s; --shinning-delay-secs: -3s;" class="header__nav-list-item-link shinning-element" routerLink="" (click)="setHomeTitle($event)">HOME</a>
             </li>
             <li class="header__nav-list-item">
-                <a style="--i:2" class="header__nav-list-item-link" routerLink="astronaut" (click)="setAstronautTitle($event)">ASTRONAUT</a>
+                <a style=" --shinning-duration-secs: 5s; --shinning-delay-secs: -2s;" class="header__nav-list-item-link shinning-element" routerLink="astronaut" (click)="setAstronautTitle($event)">ASTRONAUT</a>
             </li>
             <li class="header__nav-list-item">
-                <a style="--i:1" class="header__nav-list-item-link" routerLink="add-astronaut" (click)="setAddAstronautTitle($event)">ADD ASTRONAUT</a>
+                <a style=" --shinning-duration-secs: 5s; --shinning-delay-secs: -1s;" class="header__nav-list-item-link shinning-element" routerLink="add-astronaut" (click)="setAddAstronautTitle($event)">ADD ASTRONAUT</a>
             </li>
         </ul>
     </nav>

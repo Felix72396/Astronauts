@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Astronauts.Api.Controllers;
 
-[Authorize(Roles = nameof(RoleType.Administrator))]
+//[Authorize(Roles = nameof(RoleType.Administrator))]
 [Produces("application/json")]
 [Route("api/[controller]")]
 [ApiController]

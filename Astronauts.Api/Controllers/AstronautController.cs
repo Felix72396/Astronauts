@@ -14,7 +14,7 @@ using System.Net;
 
 
 namespace Astronauts.Api.Controllers;
-[Authorize]
+//[Authorize]
 [Produces("application/json")]
 [Route("api/[controller]")]
 [ApiController]

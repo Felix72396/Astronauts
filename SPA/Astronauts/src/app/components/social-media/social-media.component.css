@@ -1,0 +1,172 @@
+caption {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px dashed #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(5, 7, 37);
+}
+
+tbody tr {
+    transition: 0.3s ease-in-out;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -ms-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #2c2766;
+}
+
+tbody tr:hover {
+    background-color: rgb(5, 7, 37) !important;
+    cursor: pointer;
+}
+
+.actions button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px dashed #fff;
+    background-color: #2c2766;
+    color: #fff;
+}
+
+.btn {
+    --opacity: .5 !important;
+    transition: 0.3s ease-in-out;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -ms-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+}
+
+button.btn-edit:hover {
+    background-color: rgb(138, 17, 130);
+}
+
+button.btn-delete:hover {
+    background-color: rgb(241, 12, 12);
+}
+
+.cell-description{
+    max-width: 200px;
+}
+
+.cell-link{
+    max-width: 400px;
+}
+
+.editable-cell{
+    outline: 2px dashed #ffffff;
+    border: 1px dashed #000;
+    background-color: #ccc;
+    color: #000;
+    cursor: text;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -ms-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+}
+
+.editable-cell:focus{
+    background-color: #fff;
+}
+
+
+fieldset{
+    min-height: 80px;
+    padding-block: 20px;
+    padding-inline: 10px;
+}
+
+fieldset, legend, button.btn-search, button.btn-reload{
+    border: 1px dashed #fff;
+    border-radius: 15px;
+}
+
+legend{
+    text-align: center;
+    padding: 10px 100px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin-inline: auto;
+}
+
+label{
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    background-color: #09062caf;
+}
+
+
+:where([type='text'], [type='url']){
+    border: 0;
+    outline: 1px dashed #fff;
+    outline-offset: 0px;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -ms-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+:where([type='text'], [type='url']):focus{
+    outline-offset: 3px;
+}
+
+button.btn-submit{
+    width: 100%;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #09062c;
+    color: #fff;
+    font-size: 2rem;
+    margin-top: 10px;
+    border: 1px dashed #fff;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    --shinning-duration-secs: 8s;
+    --shinning-delay-secs: 0s;
+}
+
+button.btn-submit:hover{
+    background-color: rgb(17, 138, 138);
+    font-size: 3rem;
+}

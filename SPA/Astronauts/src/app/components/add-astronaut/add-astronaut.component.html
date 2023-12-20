@@ -1,1 +1,43 @@
-<p>add-astronaut works!</p>
+<div class="add-astronaut">
+    <form [formGroup]="addForm" (ngSubmit)="postAstronaut()">
+
+        <fieldset class="add-astronaut__field-container util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <legend>Personal Information</legend>
+
+            <label for="firstName" class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+                <i class="fa-solid fa-asterisk" title="Required"></i>
+                First Name <input type="text" id="firstName" formControlName="firstName" title="Enter first name" placeholder="Enter first name" maxlength="25">
+            </label>
+            <label for="lastName" class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+                <i class="fa-solid fa-asterisk" title="Required"></i>
+                Last Name <input type="text" id="lastName" formControlName="lastName" title="Enter last name" placeholder="Enter last name" maxlength="25">
+            </label>
+            <label for="nationality" class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+                <i class="fa-solid fa-asterisk" title="Required"></i>
+                Nationality <input type="text" id="nationality" formControlName="nationality" title="Enter nationality" placeholder="Enter nationality" maxlength="20">
+            </label>
+            <label for="description" class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+                Description <textarea id="description" formControlName="description" title="Enter description" placeholder="Enter description" maxlength="200" cols="50" rows="3"></textarea>
+            </label>
+            <label for="birthDate" class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+                <i class="fa-solid fa-asterisk" title="Required"></i>
+                Birth Date <input type="date" id="birthDate" formControlName="birthDate" title="Enter birth date" placeholder="Enter birthDate" maxlength="20">
+            </label>
+            <label class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+                <i class="fa-solid fa-asterisk" title="Required"></i>
+                <span>Status</span>
+                <div class="add-astronaut__radio-container util-w100 util-center-text">
+                    <input type="radio" [value]="true" formControlName="status" title="Select active astronauts"> <span>Active</span>
+                    <input type="radio" [value]="false" formControlName="status" title="Select inactive astronauts"> <span>Inactive</span>
+                </div>
+            </label>
+            <div class="add-astronaut__photo-container util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+                <img class="add-astronaut__photo" [src]="imageUrl" />
+                <input type="file" (change)="handleFileInput($event); onFileSelected($event)" title="Load a photo" accept="image/*">
+            </div>
+            <button type="submit" class="btn-add shinning-element" [value]="'add'" title="Add astronaut">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </fieldset> 
+    </form>
+</div>

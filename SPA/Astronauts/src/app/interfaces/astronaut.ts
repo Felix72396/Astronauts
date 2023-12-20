@@ -1,10 +1,10 @@
 export interface Astronaut {
-    id: number;
+    id?: number;
     firstName: string;
     lastName: string;
     nationality: string;
-    description: string;
+    description?: string;
     birthDate: Date;
     status: boolean;
-    photo: string;
+    photo?: Blob;
 }

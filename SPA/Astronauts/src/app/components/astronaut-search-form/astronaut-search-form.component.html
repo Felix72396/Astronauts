@@ -1,26 +1,22 @@
-<form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+<form class="form" [formGroup]="searchForm" (ngSubmit)="submitForm()">
     <fieldset class="util-display-flex util-align-items-center util-justify-content-space-evenly" >
         <legend>Search Form</legend>
-        <label for="id">
-            Id <input type="text" id="id" formControlName="id" title="Enter a numeric id" placeholder="Type id" maxlength="5">
+        <label class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center" for="id">
+            Id <input type="text" id="id" formControlName="id" title="Enter a numeric id" placeholder="Enter id" maxlength="5">
         </label>
-        <label for="nationality">
-            Nationality <input type="text" id="nationality" formControlName="nationality" title="Enter nationality" placeholder="Type nationality" maxlength="20">
+        <label class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center" for="nationality">
+            Nationality <input type="text" id="nationality" formControlName="nationality" title="Enter nationality" placeholder="Enter nationality" maxlength="20">
         </label>
-        <label>
-            <input type="radio" [value]="'active'" formControlName="status" title="Select active astronauts"> Active
-            <input type="radio" [value]="'inactive'" formControlName="status" title="Select inactive astronauts"> Inactive
+        <label class="util-display-flex util-flex-direction-column util-align-items-center util-justify-content-center">
+            <span>Status</span>
+            <div class="form__radio-container util-w100">
+                <input type="radio" [value]="true" formControlName="status" title="Select active astronauts"> <span>Active</span>
+                <input type="radio" [value]="false" formControlName="status" title="Select inactive astronauts"> <span>Inactive</span>   
+            </div>
         </label>
     </fieldset>
 
-
-    <button type="submit" class="btn-search" [value]="'search'" title="Search">
+    <button type="submit" class="btn-search shinning-element" [value]="'search'" title="Search">
         <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-
-    <!-- <button type="submit" class="btn-reload" [value]="'reload'" title="Reload">
-        <i class="fa-solid fa-arrow-rotate-right"></i>
-    </button> -->
-
-    
+    </button>   
 </form>

@@ -1,4 +1,7 @@
-﻿namespace Astronauts.Core.DTOs;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace Astronauts.Core.DTOs;
 
 public class AstronautDto
 {
@@ -10,6 +13,10 @@ public class AstronautDto
     public string LastName { get; set; }
     public string Nationality { get; set; }
     public string? Description { get; set; }
+
+    [Column(TypeName = "date")]
+    [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+
     public DateTime BirthDate { get; set; }
     public bool Status { get; set; }
     public byte[]? Photo { get; set; } = null;

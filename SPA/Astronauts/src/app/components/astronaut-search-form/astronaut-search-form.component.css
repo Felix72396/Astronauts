@@ -19,13 +19,14 @@ legend{
 }
 
 label{
-    background-color: #09062caf;
-    border-radius: 25px;
     padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
+    background-color: #09062caf;
 }
 
 #id{
@@ -43,16 +44,34 @@ label{
     -o-transition: .3s all ease-in-out;
 }
 
+.form__radio-container{
+    border-radius: 25px;
+    margin-top: 10px;
+    padding: 4px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    background-color: #fff;
+}
+
+.form__radio-container span{
+    color: #09062c;
+}
+
 [type="radio"]
 {
     margin-inline: 10px;
+    accent-color: #09062c;
+    outline: 1px dashed #09062c;
+    cursor: pointer;
 }
 
 [type=text]{
     padding: 5px;
-    margin-left: 5px;
     text-align: center;
     border-radius: 15px;
+    margin-top: 10px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
@@ -63,9 +82,9 @@ label{
     outline-offset: 3px;
 }
 
-button.btn-search, button.btn-reload{
+button.btn-search{
     width: 100%;
-    height: 50px;
+    height: 80px;
     cursor: pointer;
     border-radius: 10px;
     background-color: #09062c;
@@ -81,16 +100,11 @@ button.btn-search, button.btn-reload{
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    --shinning-duration-secs: 8s;
+    --shinning-delay-secs: 0s;
 }
 
-/* button.btn-search{
-    margin-right: 1%;
-}
-
-button.btn-reload{
-    margin-left: 1%;
-} */
-
-:is(button.btn-search, button.btn-reload):hover{
+button.btn-search:hover{
     background-color: rgb(17, 138, 138);
+    font-size: 3rem;
 }

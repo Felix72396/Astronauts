@@ -6,7 +6,6 @@ public interface IUnitOfWork : IDisposable
     IMissionRepository MissionRepository { get; }
     ISocialMediaRepository SocialMediaRepository { get; }
     IAstronautMissionRepository AstronautMissionRepository { get; }
-    IAstronautSocialMediaRepository AstronautSocialMediaRepository { get; }
     ISecurityRepository SecurityRepository { get; }
     void SaveChanges();
     Task SaveChangesAsync();

@@ -16,22 +16,26 @@ export class HeaderComponent {
 
   setHomeTitle(event: Event) {
     event.preventDefault();
-    this.titleService.titleClicked.next('Welcome to Astronaut Project');
+    let title: string = 'Welcome to Astronaut Project';
+    this.titleService.titleClicked.next(title);
+    this.titleService.setSelectedTitleToLocalStorage(title);
   }
 
-  setLoginTitle(event: Event) {
-    event.preventDefault();
-    this.titleService.titleClicked.next('Login');
-  }
+  // setLoginTitle(event: Event) {
+  //   event.preventDefault();
+  //   this.titleService.titleClicked.next('Login');
+  // }
 
-  setRegisterTitle(event: Event) {
-    event.preventDefault();
-    this.titleService.titleClicked.next('Register');
-  }
+  // setRegisterTitle(event: Event) {
+  //   event.preventDefault();
+  //   this.titleService.titleClicked.next('Register');
+  // }
 
   setAstronautTitle(event: Event) {
     event.preventDefault();
-    this.titleService.titleClicked.next('Astronaut list');
+    let title: string = 'Astronaut list';
+    this.titleService.titleClicked.next(title);
+    this.titleService.setSelectedTitleToLocalStorage(title);
   }
 
   // setAstronautDetailTitle(event: Event) {
@@ -41,16 +45,18 @@ export class HeaderComponent {
 
   setAddAstronautTitle(event: Event) {
     event.preventDefault();
-    this.titleService.titleClicked.next('Add Astronaut');
+    let title: string = 'Add Astronaut';
+    this.titleService.titleClicked.next(title);
+    this.titleService.setSelectedTitleToLocalStorage(title);
   }
 
-  setMissionsTitle(event: Event) {
-    event.preventDefault();
-    this.titleService.titleClicked.next('Missions done');
-  }
+  // setMissionsTitle(event: Event) {
+  //   event.preventDefault();
+  //   this.titleService.titleClicked.next('Missions done');
+  // }
 
-  setSocialMediaTitle(event: Event) {
-    event.preventDefault();
-    this.titleService.titleClicked.next('Social media links');
-  }
+  // setSocialMediaTitle(event: Event) {
+  //   event.preventDefault();
+  //   this.titleService.titleClicked.next('Social media links');
+  // }
 }
