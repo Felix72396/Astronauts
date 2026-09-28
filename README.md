@@ -1,5 +1,5 @@
 # Astronauts
-A FullStack challenge made in .NET 8 and Angular for a job.
+A FullStack challenge made in .NET 8 and Angular.
 
 ## Requirements:
 - An astronaut should have the following properties: name, nationality, description, date of date, age, social media and missions linked to a specific astronaut.
